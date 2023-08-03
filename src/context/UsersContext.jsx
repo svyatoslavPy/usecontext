@@ -1,15 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const UsersContext = createContext({
   usersData: [],
+  getUsersData: () => {},
 });
 
 export const UsersProvider = ({ children }) => {
   const [usersData, setUsersData] = useState([]);
-
-  useEffect(() => {
-    getUsersData();
-  }, []);
 
   const getUsersData = async () => {
     try {
@@ -25,6 +22,7 @@ export const UsersProvider = ({ children }) => {
     <UsersContext.Provider
       value={{
         usersData: usersData,
+        getUsersData,
       }}
     >
       {children}

@@ -1,17 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UsersContext } from "../context/UsersContext";
 
 import { User } from "./User";
 
 export const Users = () => {
-  const { usersData } = useContext(UsersContext);
+  const { usersData, getUsersData } = useContext(UsersContext);
   const users = usersData.users;
+
+  useEffect(() => {
+    getUsersData();
+  }, [getUsersData]);
 
   return (
     <>
       <h1>Users: </h1>
       <section className="users">
-        {users.length > 0 &&
+        {users?.length > 0 &&
           users
             .slice(0, 18)
             .map((user) => (
