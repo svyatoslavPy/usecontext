@@ -9,7 +9,7 @@ export const Users = () => {
 
   useEffect(() => {
     getUsersData();
-  }, [getUsersData]);
+  }, []);
 
   return (
     <>
